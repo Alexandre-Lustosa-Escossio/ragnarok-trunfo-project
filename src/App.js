@@ -12,24 +12,54 @@ class App extends React.Component {
       cardAttr2: "",
       cardAttr3: "",
       cardImage: "",
-      cardRare: "",
+      cardRare: "Normal",
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
-    this.onInputChange = this.onInputChange.bind(this)
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange({target:{name,value,type, checked}}) {
-    value = type === 'checkbox'? checked: value
-    this.setState({
-      [name]: value
-    }) 
+  validateSaveBtnAvailability() {
+    {
+      const {
+        cardName,
+        cardDescription,
+        cardImage,
+        cardRare,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+      } = this.state;
+      const convertedCardAttr1 = Number(cardAttr1)
+      const convertedCardAttr2 = Number(cardAttr2)
+      const convertedCardAttr3 = Number(cardAttr3)
+      const areInputsFilled = (cardName&&cardDescription &&cardImage && cardRare && cardAttr1 && cardAttr2 && cardAttr3) ? true: false
+      const attrValidator = (convertedCardAttr1>=0 && convertedCardAttr1 <= 90) && (convertedCardAttr2>=0 && convertedCardAttr2 <= 90) && (convertedCardAttr3>=0 && convertedCardAttr3 <= 90)
+      const attrSumValidator =  convertedCardAttr1 + convertedCardAttr2 + convertedCardAttr3 <= 210;
+      if (areInputsFilled && attrValidator && attrSumValidator) {
+        this.setState({
+          isSaveButtonDisabled: false,
+        });
+      } else {
+        this.setState({
+          isSaveButtonDisabled: true,
+        });
+      }
+    }
   }
 
-  onSaveButtonClick() {
-    return "Olá";
+  onInputChange({ target: { name, value, type, checked } }) {
+    value = type === "checkbox" ? checked : value;
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => this.validateSaveBtnAvailability()
+    );
   }
+
+  onSaveButtonClick() {}
 
   render() {
     return (
