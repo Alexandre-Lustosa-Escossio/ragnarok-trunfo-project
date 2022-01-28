@@ -22,15 +22,17 @@ class Form extends React.Component {
           data-testid="name-input"
           id="name-input"
           type="text"
-          value={ cardName }
+          value={cardName}
+          name='cardName'
           onChange={ onInputChange }
         />
         <label htmlFor="description-input"> Descrição</label>
         <input
-          id="description-input"
-          value={ cardDescription }
           data-testid="description-input"
+          id="description-input"
           type="textarea"
+          value={ cardDescription }
+          name='cardDescription'
           onChange={ onInputChange }
         />
         <label htmlFor="attr1-input"> Atributo 1</label>
@@ -38,6 +40,7 @@ class Form extends React.Component {
           data-testid="attr1-input"
           id="attr1-input"
           type="number"
+          name='cardAttr1'
           value={ cardAttr1 }
           onChange={ onInputChange }
         />
@@ -46,6 +49,7 @@ class Form extends React.Component {
           data-testid="attr2-input"
           id="attr2-input"
           type="number"
+          name='cardAttr2'
           value={ cardAttr2 }
           onChange={ onInputChange }
         />
@@ -54,6 +58,7 @@ class Form extends React.Component {
           data-testid="attr3-input"
           id="attr3-input"
           type="number"
+          name='cardAttr3'
           value={ cardAttr3 }
           onChange={ onInputChange }
         />
@@ -62,6 +67,7 @@ class Form extends React.Component {
           data-testid="image-input"
           id="image-input"
           type="text"
+          name='cardImage'
           value={ cardImage }
           onChange={ onInputChange }
         />
@@ -69,6 +75,7 @@ class Form extends React.Component {
         <select
           data-testid="rare-input"
           id="rare-input"
+          name='cardRare'
           value={ cardRare }
           onChange={ onInputChange }
         >
@@ -81,11 +88,13 @@ class Form extends React.Component {
           data-testid="trunfo-input"
           id="trunfo-input"
           type="checkbox"
+          name='cardTrunfo'
           checked={ cardTrunfo }
           onChange={ onInputChange }
         />
         <button
           data-testid="save-button"
+          name='isSaveButtonDisabled'
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >

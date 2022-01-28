@@ -1,18 +1,34 @@
-import React from 'react';
-import Form from './components/Form';
-import Card from './components/Card';
+import React from "react";
+import Form from "./components/Form";
+import Card from "./components/Card";
 
 class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      cardName: "",
+      cardDescription: "",
+      cardAttr1: "",
+      cardAttr2: "",
+      cardAttr3: "",
+      cardImage: "",
+      cardRare: "",
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    };
+    this.onInputChange = this.onInputChange.bind(this)
   }
 
-  onInputChange() {
-    return 'Olá';
+  onInputChange({target:{name,value,type, checked}}) {
+    value = type === 'checkbox'? checked: value
+    this.setState({
+      [name]: value
+    }) 
   }
 
   onSaveButtonClick() {
-    return 'Olá';
+    return "Olá";
   }
 
   render() {
@@ -20,20 +36,29 @@ class App extends React.Component {
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName=""
-          cardDescription=""
-          cardAttr1=""
-          cardAttr2=""
-          cardAttr3=""
-          cardImage=""
-          cardRare=""
-          cardTrunfo
-          hasTrunfo={ false }
-          isSaveButtonDisabled
-          onInputChange={ () => {} }
-          onSaveButtonClick={ () => {} }
+          cardName={this.state.cardName}
+          cardDescription={this.state.cardDescription}
+          cardAttr1={this.state.cardAttr1}
+          cardAttr2={this.state.cardAttr2}
+          cardAttr3={this.state.cardAttr3}
+          cardImage={this.state.cardImage}
+          cardRare={this.state.cardRare}
+          cardTrunfo={this.state.cardTrunfo}
+          hasTrunfo={false}
+          isSaveButtonDisabled={this.state.isSaveButtonDisabled}
+          onInputChange={this.onInputChange}
+          onSaveButtonClick={() => {}}
         />
-        <Card cardName='' cardImage='' cardDescription='' cardAttr1='' cardAttr2='' cardAttr3='' cardRare={false} cardTrunfo={false}></Card>
+        <Card
+          cardName={this.state.cardName}
+          cardDescription={this.state.cardDescription}
+          cardAttr1={this.state.cardAttr1}
+          cardAttr2={this.state.cardAttr2}
+          cardAttr3={this.state.cardAttr3}
+          cardImage={this.state.cardImage}
+          cardRare={this.state.cardRare}
+          cardTrunfo={this.state.cardTrunfo}
+        ></Card>
       </div>
     );
   }
