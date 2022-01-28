@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
+import Card from './components/Card';
 
 class App extends React.Component {
   constructor() {
@@ -32,6 +33,7 @@ class App extends React.Component {
           onInputChange={ () => {} }
           onSaveButtonClick={ () => {} }
         />
+        <Card cardName='' cardImage='' cardDescription='' cardAttr1='' cardAttr2='' cardAttr3='' cardRare={false} cardTrunfo={false}></Card>
       </div>
     );
   }
