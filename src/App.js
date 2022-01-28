@@ -8,16 +8,18 @@ class App extends React.Component {
     this.state = {
       cardName: "",
       cardDescription: "",
-      cardAttr1: "",
-      cardAttr2: "",
-      cardAttr3: "",
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: "",
       cardRare: "Normal",
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cardsList: []
     };
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this)
   }
 
   validateSaveBtnAvailability() {
@@ -51,6 +53,7 @@ class App extends React.Component {
 
   onInputChange({ target: { name, value, type, checked } }) {
     value = type === "checkbox" ? checked : value;
+    //Source: https://pt-br.reactjs.org/docs/react-component.html
     this.setState(
       {
         [name]: value,
@@ -59,7 +62,35 @@ class App extends React.Component {
     );
   }
 
-  onSaveButtonClick() {}
+
+  onSaveButtonClick(e) {
+    e.preventDefault()
+    this.setState({
+      cardsList: [...this.state.cardsList,{
+      cardName: this.state.cardName,
+      cardDescription: this.state.cardDescription,
+      cardAttr1: this.state.cardAttr1,
+      cardAttr2: this.state.cardAttr2,
+      cardAttr3: this.state.cardAttr3,
+      cardImage: this.state.cardImage,
+      cardRare: this.state.cardRare,
+      hasTrunfo: this.state.hasTrunfo,
+      }]
+    },() => {
+      this.setState({
+      cardName: "",
+      cardDescription: "",
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: "",
+      cardRare: "Normal",
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    })
+    })
+  }
 
   render() {
     return (
@@ -77,7 +108,7 @@ class App extends React.Component {
           hasTrunfo={false}
           isSaveButtonDisabled={this.state.isSaveButtonDisabled}
           onInputChange={this.onInputChange}
-          onSaveButtonClick={() => {}}
+          onSaveButtonClick={this.onSaveButtonClick}
         />
         <Card
           cardName={this.state.cardName}
