@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
@@ -73,77 +72,105 @@ class App extends React.Component {
   }
 
   validateSaveBtnAvailability() {
-    {
-      const {
-        cardName,
-        cardDescription,
-        cardImage,
-        cardRare,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-      } = this.state;
-      const convertedCardAttr1 = Number(cardAttr1);
-      const convertedCardAttr2 = Number(cardAttr2);
-      const convertedCardAttr3 = Number(cardAttr3);
-      const areInputsFilled = !!((cardName && cardDescription && cardImage && cardRare && cardAttr1 && cardAttr2 && cardAttr3));
-      const attrValidator = (convertedCardAttr1 >= 0 && convertedCardAttr1 <= 90) && (convertedCardAttr2 >= 0 && convertedCardAttr2 <= 90) && (convertedCardAttr3 >= 0 && convertedCardAttr3 <= 90);
-      const attrSumValidator = convertedCardAttr1 + convertedCardAttr2 + convertedCardAttr3 <= 210;
-      if (areInputsFilled && attrValidator && attrSumValidator) {
-        this.setState({
-          isSaveButtonDisabled: false,
-        });
-      } else {
-        this.setState({
-          isSaveButtonDisabled: true,
-        });
-      }
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+    const convertedAttr1 = Number(cardAttr1);
+    const convertedAttr2 = Number(cardAttr2);
+    const convertedAttr3 = Number(cardAttr3);
+    const areInputsFilled = (cardName
+        && cardDescription
+        && cardImage
+        && cardRare
+        && cardAttr1
+        && cardAttr2
+        && cardAttr3);
+    const maxAttrNum = 90;
+    const minAttrNum = 0;
+    const attrValidator = (convertedAttr1 >= minAttrNum && convertedAttr1 <= maxAttrNum)
+      && (convertedAttr2 >= minAttrNum && convertedAttr2 <= maxAttrNum)
+      && (convertedAttr3 >= minAttrNum && convertedAttr3 <= maxAttrNum);
+    const maxAttrSum = 210;
+    const attrSumValidator = convertedAttr1
+      + convertedAttr2
+      + convertedAttr3
+      <= maxAttrSum;
+    if (areInputsFilled && attrValidator && attrSumValidator) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
     }
   }
 
   render() {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          cardName={ this.state.cardName }
-          cardDescription={ this.state.cardDescription }
-          cardAttr1={ Number(this.state.cardAttr1) }
-          cardAttr2={ Number(this.state.cardAttr2) }
-          cardAttr3={ Number(this.state.cardAttr3) }
-          cardImage={ this.state.cardImage }
-          cardRare={ this.state.cardRare }
-          cardTrunfo={ this.state.cardTrunfo }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ Number(cardAttr1) }
+          cardAttr2={ Number(cardAttr2) }
+          cardAttr3={ Number(cardAttr3) }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
           hasTrunfo={ false }
-          isSaveButtonDisabled={ this.state.isSaveButtonDisabled }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
-          cardName={ this.state.cardName }
-          cardDescription={ this.state.cardDescription }
-          cardAttr1={ this.state.cardAttr1 }
-          cardAttr2={ this.state.cardAttr2 }
-          cardAttr3={ this.state.cardAttr3 }
-          cardImage={ this.state.cardImage }
-          cardRare={ this.state.cardRare }
-          cardTrunfo={ this.state.cardTrunfo }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
         />
         <div>
-          {this.state.cardsList.map((card) => {
-            return(
-            <Card 
-            cardName={ card.cardName}
-            cardDescription={ card.cardDescription }
-            cardAttr1={ card.cardAttr1 }
-            cardAttr2={ card.cardAttr2 }
-            cardAttr3={ card.cardAttr3 }
-            cardImage={ card.cardImage }
-            cardRare={ card.cardRare}
-            cardTrunfo={ card.cardTrunfo }>
-            </Card>
-
-)
+          {cardsList.map((card) => {
+            const { name,
+              description,
+              attr1,
+              attr2,
+              attr3,
+              image,
+              rare,
+              trunfo } = card;
+            return (
+              <Card
+                key={ name }
+                cardName={ name }
+                cardDescription={ description }
+                cardAttr1={ attr1 }
+                cardAttr2={ attr2 }
+                cardAttr3={ attr3 }
+                cardImage={ image }
+                cardRare={ rare }
+                cardTrunfo={ trunfo }
+              />);
           })}
         </div>
       </div>
