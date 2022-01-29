@@ -143,26 +143,27 @@ class App extends React.Component {
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
+          cardAttr1={ parseInt(cardAttr1, 10) }
+          cardAttr2={ parseInt(cardAttr2, 10) }
+          cardAttr3={ parseInt(cardAttr3, 10) }
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
         <div>
-          {cardsList.map((card) => {
-            const { name,
-              description,
-              attr1,
-              attr2,
-              attr3,
-              image,
-              rare,
-              trunfo } = card;
+          {cardsList.map((card, index) => {
+            const { cardName: name,
+              cardDescription: description,
+              cardAttr1: attr1,
+              cardAttr2: attr2,
+              cardAttr3: attr3,
+              cardImage: image,
+              cardRare: rare,
+              cardTrunfo: trunfo,
+            } = card;
             return (
               <Card
-                key={ name }
+                key={ index }
                 cardName={ name }
                 cardDescription={ description }
                 cardAttr1={ attr1 }
