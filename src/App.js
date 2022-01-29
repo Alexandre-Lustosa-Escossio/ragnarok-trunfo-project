@@ -121,7 +121,8 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+      cardsList } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
