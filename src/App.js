@@ -143,9 +143,14 @@ class App extends React.Component {
       isSaveButtonDisabled,
       cardsList,
       hasTrunfo } = this.state;
+    const url = ('https://cdn10.idcgames.com/storage/image/14/Game-Logo/default.png');
     return (
       <main>
-        <h1>Tryunfo</h1>
+        {/* <h1>Tryunfo</h1> */}
+        <img
+          src={ url }
+          alt="Ragnarok Online Logo"
+        />
         <section className="add-card-section">
           <div className="form-div">
             <Form
