@@ -24,6 +24,7 @@ class App extends React.Component {
     this.isThereTrunfo = this.isThereTrunfo.bind(this);
     this.changeTrunfoState = this.changeTrunfoState.bind(this);
     this.validateSaveBtnAvailability = this.validateSaveBtnAvailability.bind(this);
+    this.onExcludeClick = this.onExcludeClick.bind(this);
   }
 
   onInputChange({ target: { name, value, type, checked } }) {
@@ -60,6 +61,7 @@ class App extends React.Component {
         cardRare,
         cardTrunfo,
         hasTrunfo,
+        excludeBtn: true,
       }],
       cardName: '',
       cardDescription: '',
@@ -74,19 +76,12 @@ class App extends React.Component {
     }), () => this.isThereTrunfo());
   }
 
-  isThereTrunfo() {
+  onExcludeClick(cardName, cardTrunfo) {
     const { cardsList } = this.state;
-    cardsList.forEach((card) => {
-      const { cardTrunfo } = card;
-      if (cardTrunfo) {
-        this.changeTrunfoState();
-      }
-    });
-  }
-
-  changeTrunfoState() {
+    const updatedCardsList = cardsList.filter((card) => card.cardName !== cardName);
     this.setState({
-      hasTrunfo: true,
+      cardsList: [...updatedCardsList],
+      hasTrunfo: !cardTrunfo,
     });
   }
 
@@ -129,6 +124,22 @@ class App extends React.Component {
         isSaveButtonDisabled: true,
       });
     }
+  }
+
+  changeTrunfoState() {
+    this.setState({
+      hasTrunfo: true,
+    });
+  }
+
+  isThereTrunfo() {
+    const { cardsList } = this.state;
+    cardsList.forEach((card) => {
+      const { cardTrunfo } = card;
+      if (cardTrunfo) {
+        this.changeTrunfoState();
+      }
+    });
   }
 
   render() {
@@ -192,6 +203,7 @@ class App extends React.Component {
               cardImage: image,
               cardRare: rare,
               cardTrunfo: trunfo,
+              excludeBtn,
             } = card;
             return (
               <Card
@@ -204,6 +216,8 @@ class App extends React.Component {
                 cardImage={ image }
                 cardRare={ rare }
                 cardTrunfo={ trunfo }
+                excludeBtn={ excludeBtn }
+                onExcludeClick={ this.onExcludeClick }
               />);
           })}
         </div>

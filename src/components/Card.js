@@ -10,11 +10,14 @@ class Card extends React.Component {
       cardAttr2,
       cardAttr3,
       cardRare,
-      cardTrunfo } = this.props;
+      cardTrunfo,
+      excludeBtn,
+      onExcludeClick } = this.props;
     return (
       <div className="card-container">
         <div className="card-background">
           <div className="card-frame">
+            {excludeBtn ? <button data-testid="delete-button" type="button" onClick={ () => onExcludeClick(cardName, cardTrunfo) }>Excluir</button> : ''}
             <div className="frame-header">
               <span data-testid="name-card">{cardName}</span>
             </div>
@@ -42,6 +45,12 @@ class Card extends React.Component {
   }
 }
 
+// Source: https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
+Card.defaultProps = {
+  excludeBtn: false,
+  onExcludeClick: () => {},
+};
+
 Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
@@ -51,6 +60,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  excludeBtn: PropTypes.bool,
+  onExcludeClick: PropTypes.func,
 };
 
 export default Card;
