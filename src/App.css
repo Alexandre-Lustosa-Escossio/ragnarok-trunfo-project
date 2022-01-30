@@ -67,11 +67,11 @@ label {
 
 }
 
-label, input, select {
+label, input, select, button {
   cursor: url('../images/handCursor.cur') , default;
 }
 
-button {
+.save-button {
   margin-top: 20px;
 }
 
@@ -96,6 +96,8 @@ input {
   width: 170px;
 }
 
+
+/* Card Stylization */
 .card-container {
   background: #171314;
   border: 1px solid black;
@@ -104,8 +106,9 @@ input {
   box-sizing: border-box;
   color: white;
   height: 500px;
-  margin: 0 auto;
+  margin-left: 10px;
   width: 357px;
+
 }
 
 .form-div .card-container {
@@ -179,4 +182,27 @@ input {
 .char-image {
   margin: auto;
   width: 70%;
+}
+
+/* Collection Container Stylization */
+.collection-container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin: 30px 0 0 20px;
+}
+
+.delete-button {
+  background-color: red;
+  border-radius: 50%;
+  bottom: 465px;
+  height: 20px;
+  left: 308px;
+  opacity: 0.3;
+  position: relative;
+  width: 20px;
+}
+
+.delete-button:hover {
+  opacity: 1;
 }

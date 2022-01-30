@@ -17,15 +17,6 @@ class Card extends React.Component {
       <div className="card-container">
         <div className="card-background">
           <div className="card-frame">
-            {excludeBtn
-              ? (
-                <button
-                  data-testid="delete-button"
-                  type="button"
-                  onClick={ () => onExcludeClick(cardName, cardTrunfo) }
-                >
-                  Excluir
-                </button>) : '' }
             <div className="frame-header">
               <span data-testid="name-card">{cardName}</span>
             </div>
@@ -46,6 +37,16 @@ class Card extends React.Component {
               <span data-testid="rare-card">{cardRare}</span>
               { cardTrunfo ? <span data-testid="trunfo-card">Super Trunfo</span> : ''}
             </div>
+            {excludeBtn
+              ? (
+                <button
+                  className="delete-button"
+                  data-testid="delete-button"
+                  type="button"
+                  onClick={ () => onExcludeClick(cardName, cardTrunfo) }
+                >
+                  Excluir
+                </button>) : '' }
           </div>
         </div>
       </div>

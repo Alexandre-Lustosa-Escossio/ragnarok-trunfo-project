@@ -193,7 +193,7 @@ class App extends React.Component {
             />
           </div>
         </section>
-        <div>
+        <div className="collection-container">
           {cardsList.map((card, index) => {
             const { cardName: name,
               cardDescription: description,
