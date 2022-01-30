@@ -1,9 +1,86 @@
+body{
+    cursor: url("../images/Ragnarok/Arrow.png"),default;
+}
 main {
   text-align: center;
 }
 
 .add-card-section {
   display: flex;
+  justify-content: space-around;
+}
+
+.form-div{
+    width: 50%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items:center;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 3px 80px 30px rgba(0, 0, 0, 0.12);
+}
+
+.title .bol{
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(83, 122, 231);
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.title{
+  box-sizing: border-box;  
+  padding: 15px;
+  width: 100%;
+  height: 20px;
+  background: rgb(53, 93, 204);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+label {
+    margin: 5px;
+    
+}
+
+label, input, select{
+    cursor: url("../images/handCursor.cur"),default;
+}
+
+button {
+    margin-top: 20px;
+}
+
+h5{
+  color: #fff;
+}
+.input-span {
+    color: rgb(53, 93, 204);
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    width: 200px;
+  }
+
+select{
+    width: 182px;
+}
+
+input{
+    width: 170px;
+    padding: 2px 4px;
 }
 
 .card-container {
@@ -11,12 +88,15 @@ main {
   width: 500px;
   height: 700px;
   margin: 0 auto;
-  margin-top: 56px;
   border-radius: 25px;
   box-sizing: border-box;
   box-shadow: -8px 9px 16px -3px gray;
   background: #171314;
   color: white;
+}
+
+.form-div .card-container{
+    margin-top: 40px;
 }
 
 .card-background {
