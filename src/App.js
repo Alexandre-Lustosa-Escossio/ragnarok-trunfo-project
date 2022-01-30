@@ -148,6 +148,7 @@ class App extends React.Component {
       <main>
         {/* <h1>Tryunfo</h1> */}
         <img
+          className="logo-img"
           src={ url }
           alt="Ragnarok Online Logo"
         />

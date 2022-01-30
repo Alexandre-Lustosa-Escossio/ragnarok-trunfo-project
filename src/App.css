@@ -1,6 +1,11 @@
-body{
-    cursor: url("../images/Ragnarok/Arrow.png"),default;
+body {
+  background-image: url('../images/ragnarokImg3.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  cursor: url('../images/Ragnarok/Arrow.png') , default;
+
 }
+
 main {
   text-align: center;
 }
@@ -10,200 +15,165 @@ main {
   justify-content: space-around;
 }
 
-.form-div{
-    width: 50%;
+.logo-img {
+  width: 20%;
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items:center;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 1px 3px 80px 30px rgba(0, 0, 0, 0.12);
+.form-div {
+  width: 50%;
 }
 
-.title .bol{
+.form {
+  align-items: center;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 1px 3px 80px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title .bol {
+  align-items: center;
+  background: rgb(83, 122, 231);
+  border-radius: 50%;
+  display: flex;
+  height: 10px;
+  justify-content: center;
+  margin-right: 5px;
   position: relative;
   width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgb(83, 122, 231);
-  margin-right: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 
-.title{
-  box-sizing: border-box;  
-  padding: 15px;
-  width: 100%;
-  height: 20px;
-  background: rgb(53, 93, 204);
-  display: flex;
+.title {
   align-items: center;
-  justify-content: flex-start;
+  background: rgb(53, 93, 204);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  height: 20px;
+  justify-content: flex-start;
+  padding: 15px;
+  width: 100%;
 }
 
 label {
-    margin: 5px;
-    
+  margin: 5px;
+
 }
 
-label, input, select{
-    cursor: url("../images/handCursor.cur"),default;
+label, input, select {
+  cursor: url('../images/handCursor.cur') , default;
 }
 
 button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-h5{
-  color: #fff;
-}
-.input-span {
-    color: rgb(53, 93, 204);
-    font-weight: bold;
-    font-size: 14px;
-    display: inline-block;
-    width: 200px;
-  }
-
-select{
-    width: 182px;
-}
-
-input{
-    width: 170px;
-    padding: 2px 4px;
-}
-
-.card-container {
-  border: 1px solid black;
-  width: 500px;
-  height: 700px;
-  margin: 0 auto;
-  border-radius: 25px;
-  box-sizing: border-box;
-  box-shadow: -8px 9px 16px -3px gray;
-  background: #171314;
+h5 {
   color: white;
 }
 
-.form-div .card-container{
-    margin-top: 40px;
+.input-span {
+  color: rgb(53, 93, 204);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  width: 200px;
+}
+
+select {
+  width: 182px;
+}
+
+input {
+  padding: 2px 4px;
+  width: 170px;
+}
+
+.card-container {
+  background: #171314;
+  border: 1px solid black;
+  border-radius: 25px;
+  box-shadow: -8px 9px 16px -3px gray;
+  box-sizing: border-box;
+  color: white;
+  height: 500px;
+  margin: 0 auto;
+  width: 357px;
+}
+
+.form-div .card-container {
+  margin-top: 40px;
 }
 
 .card-background {
-  height: 600px;
-  margin: 20px 20px 0 20px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-left-radius: 8%;
-  border-bottom-right-radius: 8%;
-  background-image: url(https://wallup.net/wp-content/uploads/2019/09/08/630279-ragnarok-online-mmo-rpg-fantasy-action-adventure-1ragnarok-anime-fighting-game.jpg);
+  background-color: #bbb;
+  background-image: url('https://wallup.net/wp-content/uploads/2019/09/08/630279-ragnarok-online-mmo-rpg-fantasy-action-adventure-1ragnarok-anime-fighting-game.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 6px 6px 8% 8%;
   display: flex;
-  background-color: #bbb;
+  height: 430px;
+  margin: 20px 20px 0;
   z-index: 0;
 }
 
-.frame-header,
-.frame-type-line {
-  border-bottom: 4px solid #a9a9a9;
-  border-left: 2px solid #a9a9a9;
-  border-top: 1px solid #fff;
-  border-right: 1px solid #fff;
-  background: linear-gradient(
-      0deg,
-      rgba(201, 216, 201, 0.3),
-      rgba(201, 216, 209, 0.3)
-    ),
-    url(https://image.ibb.co/jKByZn/tile_bg_1.jpg);
-  display: flex;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding: 8px 0;
+.frame-header, .frame-type-line {
+  background: url('https://image.ibb.co/jKByZn/tile_bg_1.jpg');
+  border-bottom: 4px solid darkgray;
+  border-left: 2px solid darkgray;
+  border-radius: 18px/40px;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
   display: flex;
   justify-content: space-between;
-  border-radius: 18px/40px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  padding: 8px 0;
+
 }
 
-.frame-header,
-.frame-art,
-.frame-type-line {
-  box-shadow: 0 0 0 2px #171314, 0 0 0 5px #26714a, -3px 3px 2px 5px #171314;
-
+.frame-header, .frame-art, .frame-type-line {
+  box-shadow: 0 0 0 2px #171314 , 0 0 0 5px #26714a , -3px 3px 2px 5px #171314;
   margin-bottom: 7px;
 }
 
-.frame-text-box {
-    box-shadow: 
-        0 0 0 5px #26714A,
-        -3px 3px 2px 5px #171314;
-}
-
-
-.frame-header,
-.frame-type-line,
-.frame-text-box {
+.frame-header, .frame-type-line, .frame-text-box {
   overflow: hidden;
 }
 
 .card-frame {
-  z-index: 1;
-  position: relative;
-  height: 108%;
-  width: 97%;
-  left: 1%;
-  top: 0.5%;
-  left: 1.2%;
   display: flex;
   flex-direction: column;
-}
-
-.frame-header,
-.frame-type-line {
-
-  background: linear-gradient(
-      0deg,
-      rgba(201, 216, 201, 0.3),
-      rgba(201, 216, 209, 0.3)
-    ),
-    url(https://image.ibb.co/jKByZn/tile_bg_1.jpg);
-  display: flex;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding: 8px 0;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 18px/40px;
+  height: 108%;
+  left: 1.2%;
+  position: relative;
+  top: 0.5%;
+  width: 97%;
+  z-index: 1;
 }
 
 .frame-type-line {
-    margin-top: 0;
-} 
+  margin-top: 0;
+}
 
 .frame-text-box {
-    margin: 0 10px;
-    background: #d3ded6;
-    background-image: url(https://image.ibb.co/dFcNx7/tile_bg_2.jpg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;    
-    padding: 50px 6px;
-    font-size: 1.2em;
+  background: #d3ded6;
+  background-image: url('https://image.ibb.co/dFcNx7/tile_bg_2.jpg');
+  box-shadow: 0 0 0 5px #26714a , -3px 3px 2px 5px #171314;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+  justify-content: space-around;
+  margin: 0 10px;
+  padding: 50px 6px;
 }
 
-.char-image{
-    width: 70%;
-    margin: auto;
+.char-image {
+  margin: auto;
+  width: 70%;
 }
