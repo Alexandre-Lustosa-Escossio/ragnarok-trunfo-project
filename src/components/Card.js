@@ -17,7 +17,15 @@ class Card extends React.Component {
       <div className="card-container">
         <div className="card-background">
           <div className="card-frame">
-            {excludeBtn ? <button data-testid="delete-button" type="button" onClick={ () => onExcludeClick(cardName, cardTrunfo) }>Excluir</button> : ''}
+            {excludeBtn
+              ? (
+                <button
+                  data-testid="delete-button"
+                  type="button"
+                  onClick={ () => onExcludeClick(cardName, cardTrunfo) }
+                >
+                  Excluir
+                </button>) : '' }
             <div className="frame-header">
               <span data-testid="name-card">{cardName}</span>
             </div>
