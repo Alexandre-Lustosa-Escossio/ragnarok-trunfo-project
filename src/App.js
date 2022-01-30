@@ -20,6 +20,9 @@ class App extends React.Component {
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.isThereTrunfo = this.isThereTrunfo.bind(this);
+    this.changeTrunfoState = this.changeTrunfoState.bind(this);
+    this.validateSaveBtnAvailability = this.validateSaveBtnAvailability.bind(this);
   }
 
   onInputChange({ target: { name, value, type, checked } }) {
@@ -42,32 +45,48 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
       hasTrunfo } = this.state;
     this.setState(() => ({
       // Source: https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array
       cardsList: [...cardsList, {
         cardName,
         cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
+        cardAttr1: parseInt(cardAttr1, 10),
+        cardAttr2: parseInt(cardAttr2, 10),
+        cardAttr3: parseInt(cardAttr3, 10),
         cardImage,
         cardRare,
+        cardTrunfo,
         hasTrunfo,
       }],
-    }), () => {
-      this.setState({
-        cardName: '',
-        cardDescription: '',
-        cardAttr1: 0,
-        cardAttr2: 0,
-        cardAttr3: 0,
-        cardImage: '',
-        cardRare: 'Normal',
-        cardTrunfo: false,
-        hasTrunfo: false,
-        isSaveButtonDisabled: true,
-      });
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'Normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    }), () => this.isThereTrunfo());
+  }
+
+  isThereTrunfo() {
+    const { cardsList } = this.state;
+    console.log(this.state);
+    cardsList.forEach((card) => {
+      const { cardTrunfo } = card;
+      if (cardTrunfo) {
+        this.changeTrunfoState();
+      }
+    });
+  }
+
+  changeTrunfoState() {
+    this.setState({
+      hasTrunfo: true,
     });
   }
 
@@ -122,20 +141,21 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      cardsList } = this.state;
+      cardsList,
+      hasTrunfo } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
-          cardAttr1={ Number(cardAttr1) }
-          cardAttr2={ Number(cardAttr2) }
-          cardAttr3={ Number(cardAttr3) }
+          cardAttr1={ parseInt(cardAttr1, 10) }
+          cardAttr2={ parseInt(cardAttr2, 10) }
+          cardAttr3={ parseInt(cardAttr3, 10) }
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo={ false }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
