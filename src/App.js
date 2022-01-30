@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -75,7 +76,6 @@ class App extends React.Component {
 
   isThereTrunfo() {
     const { cardsList } = this.state;
-    console.log(this.state);
     cardsList.forEach((card) => {
       const { cardTrunfo } = card;
       if (cardTrunfo) {
@@ -144,32 +144,38 @@ class App extends React.Component {
       cardsList,
       hasTrunfo } = this.state;
     return (
-      <div>
+      <main>
         <h1>Tryunfo</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ parseInt(cardAttr1, 10) }
-          cardAttr2={ parseInt(cardAttr2, 10) }
-          cardAttr3={ parseInt(cardAttr3, 10) }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ parseInt(cardAttr1, 10) }
-          cardAttr2={ parseInt(cardAttr2, 10) }
-          cardAttr3={ parseInt(cardAttr3, 10) }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+        <section className="add-card-section">
+          <div className="form-div">
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ parseInt(cardAttr1, 10) }
+              cardAttr2={ parseInt(cardAttr2, 10) }
+              cardAttr3={ parseInt(cardAttr3, 10) }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </div>
+          <div className="card-div">
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ parseInt(cardAttr1, 10) }
+              cardAttr2={ parseInt(cardAttr2, 10) }
+              cardAttr3={ parseInt(cardAttr3, 10) }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </div>
+        </section>
         <div>
           {cardsList.map((card, index) => {
             const { cardName: name,
@@ -195,7 +201,7 @@ class App extends React.Component {
               />);
           })}
         </div>
-      </div>
+      </main>
     );
   }
 }
