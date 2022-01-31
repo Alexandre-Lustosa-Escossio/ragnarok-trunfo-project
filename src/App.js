@@ -236,36 +236,15 @@ class App extends React.Component {
           </label>
         </div>
         <div className="collection-container">
-          {filteredCards.map((card, index) => {
-            const { cardName: name,
-              cardDescription: description,
-              cardAttr1: attr1,
-              cardAttr2: attr2,
-              cardAttr3: attr3,
-              cardImage: image,
-              cardRare: rare,
-              cardTrunfo: trunfo,
-              excludeBtn,
-            } = card;
-            return (
-              <Card
-                key={ index }
-                cardName={ name }
-                cardDescription={ description }
-                cardAttr1={ attr1 }
-                cardAttr2={ attr2 }
-                cardAttr3={ attr3 }
-                cardImage={ image }
-                cardRare={ rare }
-                cardTrunfo={ trunfo }
-                excludeBtn={ excludeBtn }
-                onExcludeClick={ this.onExcludeClick }
-              />);
-          })}
+          {filteredCards.map((card, index) => (
+            <Card
+              key={ index }
+              { ...card }
+              onExcludeClick={ this.onExcludeClick }
+            />))}
         </div>
       </main>
     );
   }
 }
-
 export default App;
