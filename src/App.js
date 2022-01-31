@@ -174,17 +174,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { cardName,
-      cardDescription,
-      cardAttr1,
+    const { cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      isSaveButtonDisabled,
-      filteredCards,
-      hasTrunfo } = this.state;
+      filteredCards } = this.state;
     const url = ('https://cdn10.idcgames.com/storage/image/14/Game-Logo/default.png');
     return (
       <main>
@@ -206,16 +199,10 @@ class App extends React.Component {
           </div>
           <div className="card-div">
             <Card
-              /* cardName={ cardName }
-              cardDescription={ cardDescription }
-              cardImage={ cardImage }
-              cardRare={ cardRare }
-              cardTrunfo={ cardTrunfo } */
               { ...this.state }
               cardAttr1={ parseInt(cardAttr1, 10) }
               cardAttr2={ parseInt(cardAttr2, 10) }
               cardAttr3={ parseInt(cardAttr3, 10) }
-              isSaveButtonDisabled={ false }
             />
           </div>
         </section>
