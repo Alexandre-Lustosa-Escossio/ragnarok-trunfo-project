@@ -6,7 +6,7 @@ import './App.css';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
@@ -17,6 +17,9 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+    };
+    this.state = {
+      ...this.initialState,
       cardsList: [],
       filteredCards: [],
       filterNameState: '',
@@ -67,16 +70,7 @@ class App extends React.Component {
         hasTrunfo,
         excludeBtn: true,
       }],
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: true,
+      ...this.initialState,
     }), () => {
       this.isThereTrunfo();
       this.filterCards();
@@ -97,38 +91,35 @@ class App extends React.Component {
     }, () => this.filterCards());
   }
 
+  filterValidation(rareFilterSource, nameFilter) {
+    const { cardsList } = this.state;
+    const filteredCards = cardsList.filter((card) => {
+      const validateRareFilter = rareFilterSource === 'todas'
+        ? true : card.cardRare === rareFilterSource;
+      return (card.cardName.includes(nameFilter) && validateRareFilter);
+    });
+    return filteredCards;
+  }
+
   filterCards(e) {
-    const { cardsList, filterNameState, filterRareState } = this.state;
+    const { filterNameState, filterRareState } = this.state;
     if (e) {
       const { target: { type, value } } = e;
       if (type === 'text') {
-        const filteredCards = cardsList.filter((card) => {
-          const validateRareFilter = filterRareState === 'todas'
-            ? true : card.cardRare === filterRareState;
-          return (card.cardName.includes(value) && validateRareFilter);
-        });
+        const filteredCards = this.filterValidation(filterRareState, value);
         this.setState(() => ({
           filteredCards,
           filterNameState: value,
         }));
       } else {
-        const filteredCards = cardsList.filter((card) => {
-          const validateRareFilter = value === 'todas'
-            ? true : card.cardRare === value;
-          return (validateRareFilter && card.cardName.includes(filterNameState));
-        });
+        const filteredCards = this.filterValidation(value, filterNameState);
         this.setState(() => ({
           filteredCards,
           filterRareState: value,
         }));
       }
     } else {
-      const filteredCards = cardsList.filter(({ cardName, cardRare }) => {
-        const validateRareFilter = filterRareState === 'todas'
-          ? true : cardRare === filterRareState;
-        return (cardName.includes(filterNameState)
-        && validateRareFilter);
-      });
+      const filteredCards = this.filterValidation(filterRareState, filterNameState);
       this.setState(() => ({
         filteredCards,
       }));
