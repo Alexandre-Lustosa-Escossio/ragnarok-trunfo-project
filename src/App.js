@@ -196,7 +196,7 @@ class App extends React.Component {
         <section className="add-card-section">
           <div className="form-div">
             <Form
-              cardName={ cardName }
+              /* cardName={ cardName }
               cardDescription={ cardDescription }
               cardAttr1={ parseInt(cardAttr1, 10) }
               cardAttr2={ parseInt(cardAttr2, 10) }
@@ -205,7 +205,11 @@ class App extends React.Component {
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
               hasTrunfo={ hasTrunfo }
-              isSaveButtonDisabled={ isSaveButtonDisabled }
+              isSaveButtonDisabled={ isSaveButtonDisabled } */
+              { ...this.state }
+              cardAttr1={ parseInt(cardAttr1, 10) }
+              cardAttr2={ parseInt(cardAttr2, 10) }
+              cardAttr3={ parseInt(cardAttr3, 10) }
               onInputChange={ this.onInputChange }
               onSaveButtonClick={ this.onSaveButtonClick }
             />
