@@ -84,10 +84,15 @@ class App extends React.Component {
 
   onExcludeClick(cardName, cardTrunfo) {
     const { cardsList } = this.state;
-    const updatedCardsList = cardsList.filter((card) => card.cardName !== cardName);
+    let hasTrunfo = false;
+    const updatedCardsList = cardsList.filter((card) => {
+      hasTrunfo = card.cardTrunfo ? true : hasTrunfo;
+      return (card.cardName !== cardName);
+    });
+    hasTrunfo = cardTrunfo ? false : hasTrunfo;
     this.setState({
       cardsList: [...updatedCardsList],
-      hasTrunfo: !cardTrunfo,
+      hasTrunfo,
     }, () => this.filterCards());
   }
 
