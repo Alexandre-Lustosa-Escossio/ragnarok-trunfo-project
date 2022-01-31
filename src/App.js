@@ -136,27 +136,24 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
     } = this.state;
-    const convertedAttr1 = Number(cardAttr1);
-    const convertedAttr2 = Number(cardAttr2);
-    const convertedAttr3 = Number(cardAttr3);
-    const areInputsFilled = (cardName
-        && cardDescription
-        && cardImage
-        && cardRare
-        && cardAttr1
-        && cardAttr2
-        && cardAttr3);
-    const maxAttrNum = 90;
-    const minAttrNum = 0;
-    const attrValidator = (convertedAttr1 >= minAttrNum && convertedAttr1 <= maxAttrNum)
-      && (convertedAttr2 >= minAttrNum && convertedAttr2 <= maxAttrNum)
-      && (convertedAttr3 >= minAttrNum && convertedAttr3 <= maxAttrNum);
-    const maxAttrSum = 210;
-    const attrSumValidator = convertedAttr1
-      + convertedAttr2
-      + convertedAttr3
-      <= maxAttrSum;
-    if (areInputsFilled && attrValidator && attrSumValidator) {
+    const currState = [
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    ];
+    const attr = [
+      Number(cardAttr1),
+      Number(cardAttr2),
+      Number(cardAttr3),
+    ];
+    const attrValidator = attr.every((item) => item <= +'90' || item >= 0);
+    const attrSumValidator = attr.reduce((acc, curr) => acc + curr) <= +'210';
+    const inputsValidator = currState.some((input) => input === '');
+    if (!inputsValidator && attrValidator && attrSumValidator) {
       this.setState({
         isSaveButtonDisabled: false,
       });
