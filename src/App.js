@@ -18,6 +18,8 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       cardsList: [],
+      filteredCards: [],
+      filterState: '',
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -25,6 +27,7 @@ class App extends React.Component {
     this.changeTrunfoState = this.changeTrunfoState.bind(this);
     this.validateSaveBtnAvailability = this.validateSaveBtnAvailability.bind(this);
     this.onExcludeClick = this.onExcludeClick.bind(this);
+    this.filterCards = this.filterCards.bind(this);
   }
 
   onInputChange({ target: { name, value, type, checked } }) {
@@ -73,7 +76,10 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-    }), () => this.isThereTrunfo());
+    }), () => {
+      this.isThereTrunfo();
+      this.filterCards();
+    });
   }
 
   onExcludeClick(cardName, cardTrunfo) {
@@ -82,7 +88,27 @@ class App extends React.Component {
     this.setState({
       cardsList: [...updatedCardsList],
       hasTrunfo: !cardTrunfo,
-    });
+    }, () => this.filterCards());
+  }
+
+  filterCards(e) {
+    const { cardsList, filterState } = this.state;
+    if (e) {
+      const filteredCards = cardsList.filter((card) => (
+        card.cardName.includes(e.target.value)
+      ));
+      this.setState(() => ({
+        filteredCards,
+        filterState: e.target.value,
+      }));
+    } else {
+      const filteredCards = cardsList.filter((card) => (
+        card.cardName.includes(filterState)
+      ));
+      this.setState(() => ({
+        filteredCards,
+      }));
+    }
   }
 
   validateSaveBtnAvailability() {
@@ -152,12 +178,11 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      cardsList,
+      filteredCards,
       hasTrunfo } = this.state;
     const url = ('https://cdn10.idcgames.com/storage/image/14/Game-Logo/default.png');
     return (
       <main>
-        {/* <h1>Tryunfo</h1> */}
         <img
           className="logo-img"
           src={ url }
@@ -193,8 +218,20 @@ class App extends React.Component {
             />
           </div>
         </section>
+        <div>
+          <label htmlFor="name-filter">
+            <span>Filtrar Cartas</span>
+            <input
+              id="name-filter"
+              data-testid="name-filter"
+              placeholder="Nome da Carta"
+              name="filterCards"
+              onChange={ this.filterCards }
+            />
+          </label>
+        </div>
         <div className="collection-container">
-          {cardsList.map((card, index) => {
+          {filteredCards.map((card, index) => {
             const { cardName: name,
               cardDescription: description,
               cardAttr1: attr1,
