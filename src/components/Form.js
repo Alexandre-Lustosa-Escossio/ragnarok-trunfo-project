@@ -32,6 +32,7 @@ class Form extends React.Component {
               type="text"
               value={ cardName }
               name="cardName"
+              placeholder="Nome do Personagem"
               onChange={ onInputChange }
             />
           </label>
@@ -42,6 +43,7 @@ class Form extends React.Component {
               id="description-input"
               type="textarea"
               value={ cardDescription }
+              placeholder="Descrição"
               name="cardDescription"
               onChange={ onInputChange }
             />

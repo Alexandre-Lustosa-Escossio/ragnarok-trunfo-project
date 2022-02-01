@@ -127,6 +127,7 @@ class App extends React.Component {
   }
 
   validateSaveBtnAvailability() {
+    // Consultei o pr do Alessandro para melhorar essa função
     const {
       cardName,
       cardDescription,
@@ -213,9 +214,13 @@ class App extends React.Component {
             />
           </div>
         </section>
-        <div>
-          <span>Filtrar Cartas</span>
+        <div className="card-filter">
+          <div className="filter-header">
+            <span className="bol" />
+            <h5 className="filter-cards-span">Filtrar Cartas</h5>
+          </div>
           <label htmlFor="name-filter">
+            <span className="input-span">Filtrar por Nome</span>
             <input
               id="name-filter"
               data-testid="name-filter"
@@ -224,24 +229,28 @@ class App extends React.Component {
               onChange={ this.filterCards }
             />
           </label>
-          <select
-            data-testid="rare-filter"
-            onChange={ this.filterCards }
-            defaultValue="todas"
-          >
-            <option value="todas">Todas</option>
-            <option value="normal">Normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
-          </select>
-        </div>
-        <div className="collection-container">
-          {filteredCards.map((card, index) => (
-            <Card
-              key={ index }
-              { ...card }
-              onExcludeClick={ this.onExcludeClick }
-            />))}
+          <label htmlFor="rare-filter">
+            <span className="input-span">Filtrar por Raridade</span>
+            <select
+              id="rare-filter"
+              data-testid="rare-filter"
+              onChange={ this.filterCards }
+              defaultValue="todas"
+            >
+              <option value="todas">Todas</option>
+              <option value="normal">Normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </label>
+          <div className="collection-container">
+            {filteredCards.map((card, index) => (
+              <Card
+                key={ index }
+                { ...card }
+                onExcludeClick={ this.onExcludeClick }
+              />))}
+          </div>
         </div>
       </main>
     );
