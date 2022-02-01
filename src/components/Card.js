@@ -32,7 +32,12 @@ class Card extends React.Component {
               <span className="black-span">Descrição</span>
             </div>
             <div className="frame-text-box">
-              <p data-testid="description-card">{cardDescription}</p>
+              <p
+                className="black-span"
+                data-testid="description-card"
+              >
+                {cardDescription}
+              </p>
               <span className="attribute-label">STR:</span>
               <span className="black-span" data-testid="attr1-card">{cardAttr1}</span>
               <span className="attribute-label">AGI:</span>

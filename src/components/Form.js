@@ -38,10 +38,11 @@ class Form extends React.Component {
           </label>
           <label htmlFor="description-input">
             <span className="input-span">Descrição</span>
-            <input
+            <textarea
               data-testid="description-input"
               id="description-input"
               type="textarea"
+              rows={ 3 }
               value={ cardDescription }
               placeholder="Descrição"
               name="cardDescription"

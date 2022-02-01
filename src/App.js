@@ -243,14 +243,14 @@ class App extends React.Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-          <div className="collection-container">
-            {filteredCards.map((card, index) => (
-              <Card
-                key={ index }
-                { ...card }
-                onExcludeClick={ this.onExcludeClick }
-              />))}
-          </div>
+        </div>
+        <div className="collection-container">
+          {filteredCards.map((card, index) => (
+            <Card
+              key={ index }
+              { ...card }
+              onExcludeClick={ this.onExcludeClick }
+            />))}
         </div>
       </main>
     );

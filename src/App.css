@@ -53,6 +53,11 @@ main {
   z-index: 3;
 }
 
+.frame-text-box p {
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
 .frame-text-box span, .frame-text-box p {
   display: inline-block;
   margin: 0 10px 10px 5px;
@@ -63,6 +68,7 @@ main {
   left: 30%;
   max-width: 40%;
   position: relative;
+  margin-bottom: 60px;
 }
 
 .input-filter-label {
