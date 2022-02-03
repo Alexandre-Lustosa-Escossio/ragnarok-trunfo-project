@@ -66,9 +66,9 @@ main {
 .card-filter {
   bottom: 120px;
   left: 30%;
+  margin-bottom: 60px;
   max-width: 40%;
   position: relative;
-  margin-bottom: 60px;
 }
 
 .input-filter-label {
